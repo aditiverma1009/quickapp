@@ -1,0 +1,8 @@
+.Header {
+    background: #3b73b3;
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 1px 1px 20px 1px grey;
+    z-index: 2;
+}
