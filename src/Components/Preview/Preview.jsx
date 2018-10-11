@@ -10,7 +10,6 @@ import './Preview.css';
 
 const RenderTemplateList = ({ list, addPage }) => {
   const renderList = list.map((item) => {
-    console.log("item", item);
     const { thumbnail } = item;
     return (
       <div className="presentation-card" onClick={() => { addPage(item); }} key={item.templateName}>
@@ -51,7 +50,6 @@ class Preview extends React.Component {
     const pages = this.props.pages.slice();
     const allPages = pages.map((step, index) => (
       <div className="displayPage">
-
         <center><p>Page {index + 1} <br /> {step.template} </p></center>
       </div>
     ));
