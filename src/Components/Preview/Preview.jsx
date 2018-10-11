@@ -20,11 +20,13 @@ class Preview extends React.Component {
   render() {
     const { open } = this.state;
     return (
-      <div className="Preview" >
-        <div>
-          <button onClick={this.onOpenModal}>
+      <div>
+
+        <div className="new-template-button">
+          <button onClick={this.onOpenModal} >
             Click me!
-      </button>
+             </button>
+
         </div>
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="template-heading">
