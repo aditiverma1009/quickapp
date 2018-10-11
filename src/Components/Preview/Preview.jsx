@@ -12,8 +12,8 @@ const RenderTemplateList = ({ list, addPage }) => {
     console.log("item", item);
     const { thumbnail } = item;
     return (
-      <div className="tile" onClick={() => { addPage(item); }} key={item.templateName}>
-        <img src={thumbnail} width="100%" height="100%" />
+      <div className="tile" key={item.templateName}>
+        <img src={thumbnail} onClick={() => { addPage(item); }} width="100%" height="100%" />
       </div>
     );
   });
@@ -37,46 +37,42 @@ class Preview extends React.Component {
   };
 
   addPage = (pageDetails) => {
-    const { pageName } = this.state;
-    pageDetails.pageName = pageName;
+    this.setState({ open: false });
     return this.props.addPage(pageDetails);
   }
 
   render() {
+
     const { open } = this.state;
+    const pages = this.props.pages.slice();
+    const allPages = pages.map((step, index) => (
+      <div className="displayPage">
+
+        <center><p>Page {index + 1} <br /> {step.template} </p></center>
+      </div>
+    ));
+
     return (
-      <div>
+      <div className="Preview">
         <div onClick={this.onOpenModal} className="new-template-button" >
-          <center><p>Click me!</p></center>
+          <center><br></br><br></br>
+            <p>+</p></center>
         </div>
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="template-heading">
-            <center><h2>TEMPLATES</h2></center>
+            <h2>Templates</h2>
           </div>
           <div className="modal-size">
             <RenderTemplateList list={templateList} addPage={this.addPage} />
           </div>
-
         </Modal>
+        <div className="allPages">
+          {allPages}
+        </div>
       </div>
     )
   }
 }
-
-{/* <div className="tile-container">
-  
-  <div className="tile-disabled">
-    AVAILABLE ON SPONSORSHIP
-            </div>
-</div>
-  <div className="tile-container">
-    <div className="tile-disabled">
-      AVAILABLE ON SPONSORSHIP
-            </div>
-    <div className="tile-disabled">
-      AVAILABLE ON SPONSORSHIP
-            </div>
-  </div> */}
 
 Preview.propTypes = {
 };

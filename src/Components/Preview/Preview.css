@@ -2,7 +2,6 @@
 .Preview {
     flex:3;
 }
-
   .App-link {
     color: #61dafb;
   }
@@ -45,6 +44,32 @@
   .tile :hover{
     border: 1px solid darkgray;
   }  
- 
- 
-  
+  .name-input{
+    margin-left: 10px;
+  }
+  .Preview{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+  .allPages{
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+  }
+  .new-template-button{
+    box-shadow: 2px 2px 20px 1px grey;   
+    height:120px;
+    min-width:170px;
+    margin-top:20px;
+    margin-left:10px;
+    margin-right: 20px;
+  }
+  .displayPage{
+    box-shadow: 2px 2px 20px 1px grey;   
+    height:120px;
+    min-width:170px;
+    margin-top:20px;
+    margin-left:10px;
+    margin-right: 20px;
+  }
