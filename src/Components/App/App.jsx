@@ -4,9 +4,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
-import Header from '../Header/Header';
-import Body from '../Body/Body';
-import Preview from '../Preview/Preview';
+import Header from '../header/header';
+import WorkSpace from '../WorkSpace/WorkSpace';
 // import { onClickEditReducer } from '../../redux/Actions/index';
 
 
@@ -22,8 +21,7 @@ class App extends React.Component {
     return (
       <div className="application">
         <Header />
-        <Body />
-        <Preview />
+        <WorkSpace />
       </div>
     );
   }

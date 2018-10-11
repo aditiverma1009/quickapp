@@ -1,5 +1,5 @@
 .BodyArea {
     flex:10;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }

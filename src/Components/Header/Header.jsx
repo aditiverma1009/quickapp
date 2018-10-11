@@ -1,21 +1,25 @@
-// import PropTypes from 'prop-types';
-import React from 'react';
-// import BodyHeader from '../BodyHeader/BodyHeader';
-import './Header.css';
+import React, { Component } from 'react';
+import './header.css';
+import { Link } from 'react-router-dom';
+import logo from './logo.png';
 
-const Header = () => (
-  <div className="Header">
-    {/* <BodyHeader
-      textNoteTitleHeading={props.textNoteTitleHeading}
-      textButtonEn={props.textButtonEn}
-    /> */}
-    <div className="Logo">QuickApp</div>
-    <div className="ProjectName">Project Name for tablet</div>
-  </div>
-);
-
-Header.propTypes = {
-  //   onSaveEvent: PropTypes.func.isRequired,
-};
+class Header extends Component {
+  render() {
+    return (
+      <div className="header-main">
+        <Link to="/" style={{ textDecoration: 'none' }}><div className="back-button">&lt;</div></Link>
+        <div className="logo-position">
+          <div>QUICK</div>
+          <div>
+            {' '}
+            <img className="app-icon" src={logo} />
+          </div>
+          <div>APP</div>
+        </div>
+        <div className="signout">Sign Out</div>
+      </div>
+    );
+  }
+}
 
 export default Header;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Preview from '../Preview/Preview';
 import Canvas from '../Canvas/Canvas';
 import './Body.css';
 
@@ -22,6 +23,7 @@ export default class Body extends React.Component {
           fontSizeList2={Number(fontSizeList2)}
           fontSizeList3={Number(fontSizeList3)}
         />
+        <Preview />
       </div>
     );
   }
