@@ -9,7 +9,8 @@ const Header = () => (
       textNoteTitleHeading={props.textNoteTitleHeading}
       textButtonEn={props.textButtonEn}
     /> */}
-    <div> i am header</div>
+    <div>QuickApp</div>
+    <div>Project Name for tablet</div>
   </div>
 );
 

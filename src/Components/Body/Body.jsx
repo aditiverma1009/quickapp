@@ -1,9 +1,12 @@
 import React from 'react';
+import Canvas from '../Canvas/Canvas';
+import EditOptions from '../EditOptions/EditOptions';
 import './Body.css';
 
 const Body = () => (
-  <div className="Body">
-    <div> i am body</div>
+  <div className="BodyArea">
+    <Canvas />
+    <EditOptions />
   </div>
 );
 
