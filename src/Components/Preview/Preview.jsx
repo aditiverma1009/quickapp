@@ -3,7 +3,21 @@ import { connect } from 'react-redux';
 import Modal from 'react-responsive-modal';
 
 import templateList from '../Templates/templateList';
+import {addPage} from '../../redux/Actions';
+
 import './Preview.css';
+
+const RenderTemplateList = ({list, addPage}) => {
+  const renderList = list.map((item)=>{
+    const { thumbnail} = item;
+    return (
+      <div className="tile" onClick={() => { addPage(item); }}>
+        <img src={thumbnail} width="100%" height="100%" />
+      </div>
+    );
+  });
+  return renderList;
+}
 
 class Preview extends React.Component {
   constructor(props) {
@@ -21,6 +35,12 @@ class Preview extends React.Component {
     this.setState({ open: false });
   };
 
+  addPage = (pageDetails) => {
+    const {pageName} = this.state;
+    pageDetails.pageName = pageName;
+    return this.props.addPage(pageDetails);
+  }
+
   render() {
     const { open } = this.state;
     return (
@@ -34,7 +54,7 @@ class Preview extends React.Component {
           </div>
           <label>Name</label>
           <input type="text" width="100px" className="name-input" />
-          {/* <RenderTemplateList list={templateList} /> */}
+          <RenderTemplateList list={templateList} addPage={this.addPage}/>
           <center><button className="choose-template-button">Submit</button></center>
         </Modal>
       </div>
@@ -43,9 +63,7 @@ class Preview extends React.Component {
 }
 
 {/* <div className="tile-container">
-  <div className="tile" onClick={() => }>
-    <img src={template} width="100%" height="100%" />
-  </div>
+  
   <div className="tile-disabled">
     AVAILABLE ON SPONSORSHIP
             </div>
@@ -67,7 +85,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatcherToProps = (dispatch) => ({
-  addPage: () => dispatch(addPage()), // templateName, pageName, data
+  addPage: (pageDetails) => dispatch(addPage(pageDetails)),
 });
 
 export default connect(mapStateToProps, mapDispatcherToProps)(Preview);
