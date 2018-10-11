@@ -1,4 +1,12 @@
 .EditOptions {
     flex:2;
     background: #999999;
+    z-index: -1;
+   display: flex;
+   flex-direction: column;
+   padding:10px;
+}
+
+.Option{
+    margin-bottom:10px; 
 }

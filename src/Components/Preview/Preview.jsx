@@ -2,6 +2,7 @@ import React from 'react';
 import './Preview.css';
 import template from '../../download.jpeg';
 import Modal from 'react-responsive-modal';
+
 class Preview extends React.Component {
 
   constructor(props) {

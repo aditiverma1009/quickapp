@@ -1,4 +1,7 @@
 
+.Preview {
+    flex:3;
+}
 .template-heading{
     color: #3b73b3;
   }
