@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import Modal from 'react-responsive-modal';
 
 import templateList from '../Templates/templateList';
-import {addPage} from '../../redux/Actions';
+import { addPage } from '../../redux/Actions';
 
 import './Preview.css';
 
-const RenderTemplateList = ({list, addPage}) => {
-  const renderList = list.map((item)=>{
-    const { thumbnail} = item;
+const RenderTemplateList = ({ list, addPage }) => {
+  const renderList = list.map((item) => {
+    const { thumbnail } = item;
     return (
       <div className="tile" onClick={() => { addPage(item); }}>
         <img src={thumbnail} width="100%" height="100%" />
@@ -36,7 +36,7 @@ class Preview extends React.Component {
   };
 
   addPage = (pageDetails) => {
-    const {pageName} = this.state;
+    const { pageName } = this.state;
     pageDetails.pageName = pageName;
     return this.props.addPage(pageDetails);
   }
@@ -50,12 +50,12 @@ class Preview extends React.Component {
         </div>
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="template-heading">
-            <center><h2>Templates</h2></center>
+            <center><h2>TEMPLATES</h2></center>
           </div>
-          <label>Name</label>
-          <input type="text" width="100px" className="name-input" />
-          <RenderTemplateList list={templateList} addPage={this.addPage}/>
-          <center><button className="choose-template-button">Submit</button></center>
+          <div className="modal-size">
+            <RenderTemplateList list={templateList} addPage={this.addPage} />
+          </div>
+
         </Modal>
       </div>
     )

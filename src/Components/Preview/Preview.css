@@ -2,9 +2,7 @@
 .Preview {
     flex:3;
 }
-.template-heading{
-    color: #3b73b3;
-  }
+
   .App-link {
     color: #61dafb;
   }
@@ -16,34 +14,37 @@
     margin:15px;
   }
   .tile{
-    width:200px;
-    height:150px;
-    box-shadow: 6px 7px 25px -1px grey;
+    display: inline-block;
+    margin: 50px 0 0 2%;
+    height: 150px;
+    width: 250px;
+    box-shadow: 6px 7px 17px -2px grey;
   }
-  .tile-disabled{
+  .modal-size{
+    width:800px;
+    height:500px;
+    display:flex;
+    flex-direction: row;
+    font-size: 0;
+    flex-wrap: wrap;
+    margin: 10px 5px 20px -10px;
+    overflow-y: scroll;
+  }
+  .template-heading{
+    color: #3b73b3;
+      font-size: 15pt;
+     
+  }
+  /* .tile-disabled{
     width:200px;
     height:150px;
     box-shadow: 6px 7px 25px -1px grey;
     Color:grey;
     text-align: center;
-  }
+  } */
   .tile :hover{
     border: 1px solid darkgray;
-  }
+  }  
+ 
  
   
-  .name-input{
-    margin-left: 10px;
-  }
-  .new-template-button{
-    box-shadow: 2px 2px 20px 1px grey;   
-    /* height:150px; */
-    width:170px;
-     
-  }
-  .preview{
-    box-shadow: 2px 2px 20px 1px grey;   
-    background-color: green; 
-    height: 150px;;
-   
-  }
