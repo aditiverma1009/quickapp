@@ -2,6 +2,7 @@ import React from 'react';
 import './Preview.css';
 import template from '../../download.jpeg';
 import Modal from 'react-responsive-modal';
+
 class Preview extends React.Component {
 
   constructor(props) {
@@ -20,7 +21,7 @@ class Preview extends React.Component {
   render() {
     const { open } = this.state;
     return (
-      <div>
+      <div className="Preview">
 
         <div className="new-template-button">
           <button onClick={this.onOpenModal} >
