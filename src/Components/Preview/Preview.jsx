@@ -43,18 +43,30 @@ class Preview extends React.Component {
   // }
 
   render() {
+
     const { open } = this.state;
+    const pages = this.props.pages.slice();
+    const allPages = pages.map((step, index) => (
+      <div className="displayPage">
+      
+        <center><p>Page {index+1} <br/> {step.template} </p></center>
+      </div>
+    ));
+
     return (
-      <div>
+      <div className="Preview">
         <div onClick={this.onOpenModal} className="new-template-button" >
           <center><p>Click me!</p></center>
         </div>
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="template-heading">
-            <center><h2>Templates</h2></center>
+            <h2>Templates</h2>
           </div>
           <RenderTemplateList list={templateList} addPage={this.props.addPage}/>
         </Modal>
+        <div className="allPages">
+        {allPages}
+        </div>
       </div>
     )
   }

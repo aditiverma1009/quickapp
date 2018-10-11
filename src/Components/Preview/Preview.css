@@ -37,13 +37,20 @@
   }
   .new-template-button{
     box-shadow: 2px 2px 20px 1px grey;   
-    /* height:150px; */
+    height:120px;
     width:170px;
      
   }
-  .preview{
+  .Preview{
+    display: flex;
+    flex-direction: row;
+  }
+  .allPages{
+    display: flex;
+    flex-direction: row;
+  }
+  .displayPage{
     box-shadow: 2px 2px 20px 1px grey;   
-    background-color: green; 
-    height: 150px;;
-   
+    height:120px;
+    width:170px;
   }
