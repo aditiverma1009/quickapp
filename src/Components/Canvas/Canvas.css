@@ -13,3 +13,7 @@
     margin: auto;
     margin-top:20px; 
 }
+
+.EditModeInputFrame {
+    flex-direction: column;
+}
