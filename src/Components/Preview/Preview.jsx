@@ -21,12 +21,8 @@ class Preview extends React.Component {
     const { open } = this.state;
     return (
       <div>
-
-        <div className="new-template-button">
-          <button onClick={this.onOpenModal} >
-            Click me!
-             </button>
-
+        <div onClick={this.onOpenModal} className="new-template-button" >
+          <center><p>Click me!</p></center>
         </div>
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="template-heading">
