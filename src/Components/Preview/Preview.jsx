@@ -1,14 +1,16 @@
 import React from 'react';
-import './Preview.css';
-import template from '../../download.jpeg';
+import { connect } from 'react-redux';
 import Modal from 'react-responsive-modal';
 
-class Preview extends React.Component {
+import templateList from '../Templates/templateList';
+import './Preview.css';
 
+class Preview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      pageName: '',
     };
   };
 
@@ -18,6 +20,7 @@ class Preview extends React.Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
+
   render() {
     const { open } = this.state;
     return (
@@ -29,24 +32,9 @@ class Preview extends React.Component {
           <div className="template-heading">
             <center><h2>Templates</h2></center>
           </div>
-          <label >Name</label>
+          <label>Name</label>
           <input type="text" width="100px" className="name-input" />
-          <div className="tile-container">
-            <div className="tile" onClick={() => alert("you have chose template 1")}>
-              <img src={template} width="100%" height="100%" />
-            </div>
-            <div className="tile-disabled">
-              AVAILABLE ON SPONSORSHIP
-            </div>
-          </div>
-          <div className="tile-container">
-            <div className="tile-disabled">
-              AVAILABLE ON SPONSORSHIP
-            </div>
-            <div className="tile-disabled">
-              AVAILABLE ON SPONSORSHIP
-            </div>
-          </div>
+          {/* <RenderTemplateList list={templateList} /> */}
           <center><button className="choose-template-button">Submit</button></center>
         </Modal>
       </div>
@@ -54,7 +42,32 @@ class Preview extends React.Component {
   }
 }
 
+{/* <div className="tile-container">
+  <div className="tile" onClick={() => }>
+    <img src={template} width="100%" height="100%" />
+  </div>
+  <div className="tile-disabled">
+    AVAILABLE ON SPONSORSHIP
+            </div>
+</div>
+  <div className="tile-container">
+    <div className="tile-disabled">
+      AVAILABLE ON SPONSORSHIP
+            </div>
+    <div className="tile-disabled">
+      AVAILABLE ON SPONSORSHIP
+            </div>
+  </div> */}
+
 Preview.propTypes = {
 };
 
-export default Preview;
+const mapStateToProps = (state) => ({
+  pages: state.templatesReducer.pages
+});
+
+const mapDispatcherToProps = (dispatch) => ({
+  addPage: () => dispatch(addPage()), // templateName, pageName, data
+});
+
+export default connect(mapStateToProps, mapDispatcherToProps)(Preview);
