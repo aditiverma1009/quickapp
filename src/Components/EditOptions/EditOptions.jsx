@@ -1,6 +1,4 @@
 import React from 'react';
-
-import Button from '../Button/Button';
 import './EditOptions.css';
 
 class EditOptions extends React.Component {
