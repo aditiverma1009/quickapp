@@ -36,11 +36,11 @@ class Preview extends React.Component {
     this.setState({ open: false });
   };
 
-  addPage = (pageDetails) => {
-    const {pageName} = this.state;
-    pageDetails.pageName = pageName;
-    return this.props.addPage(pageDetails);
-  }
+  // addPage = (pageDetails) => {
+  //   const {pageName} = this.state;
+  //   pageDetails.index = pageName;
+  //   return this.props.addPage(pageDetails);
+  // }
 
   render() {
     const { open } = this.state;
@@ -53,30 +53,12 @@ class Preview extends React.Component {
           <div className="template-heading">
             <center><h2>Templates</h2></center>
           </div>
-          <label>Name</label>
-          <input type="text" width="100px" className="name-input" />
-          <RenderTemplateList list={templateList} addPage={this.addPage}/>
-          <center><button className="choose-template-button">Submit</button></center>
+          <RenderTemplateList list={templateList} addPage={this.props.addPage}/>
         </Modal>
       </div>
     )
   }
 }
-
-{/* <div className="tile-container">
-  
-  <div className="tile-disabled">
-    AVAILABLE ON SPONSORSHIP
-            </div>
-</div>
-  <div className="tile-container">
-    <div className="tile-disabled">
-      AVAILABLE ON SPONSORSHIP
-            </div>
-    <div className="tile-disabled">
-      AVAILABLE ON SPONSORSHIP
-            </div>
-  </div> */}
 
 Preview.propTypes = {
 };

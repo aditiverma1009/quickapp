@@ -9,10 +9,10 @@ const templateReducer = (prevState = defaultValue, action) => {
     case 'ADD_PAGE': {
       const { pages } = prevState;
       const {
-        templateName, pageName, defaultData, thumbnail,
+        templateName, defaultData, thumbnail,
       } = action.payload;
       const pageData = {
-        index: pageName,
+        index: Date.now(),
         template: templateName,
         data: defaultData,
         thumbnail,
