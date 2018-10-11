@@ -3,6 +3,9 @@ import './App.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import Header from '../Header/Header';
+import Body from '../Body/Body';
+import Preview from '../Preview/Preview';
 // import { onClickEditReducer } from '../../redux/Actions/index';
 
 
@@ -16,7 +19,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app" />
+      <div className="app">
+        <Header />
+        <Body />
+        <Preview />
+      </div>
     );
   }
 }
