@@ -1,17 +1,44 @@
-.Header {
-    background: #3b73b3;
-    border-bottom:1px solid black;
-    flex:1;
+.back-button{
+ flex:1;
+ display: flex;
+ justify-content: flex-start;
+ padding-left:10px;
+ align-items: center;
+}
+
+.logo-position{
+ flex:10;
+ display: flex;
+ justify-content: center;
+}
+
+.signout{
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.header-main {
+    height: 200px;
+    width:100vw;
+    background-color: #3b73b3;
+    align-items: center;
+    color: #fff;
+    font-weight: 300;
+    min-height: 45px;
+    height: 6.5vh;
+    font-family:arial;
+    font-weight: 700;
+    font-size: 16;
+    letter-spacing: 2px;
     display: flex;
-    flex-direction: row;
-}
-.Logo {
-    flex:1;
-    background:#3b73b3;
-}
-.ProjectName {
-   flex:10;
-   color: white;
-   font-size: 30pt;
-   padding-left: 350px;
-}
+    align-items: center;
+
+  }
+  
+  .app-icon {
+  max-height: 6.5vh;
+  /* height: 6.5vh */
+  }

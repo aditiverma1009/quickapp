@@ -1,0 +1,38 @@
+.presentation-card {
+  float: left;
+  margin: 20px;
+  padding: 12px 20px;
+  display: block;
+  width: 175px;
+  height: 210px;
+  border-radius: 4px;
+  font: 500 12px MuseoSans;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .1);
+  position: relative;
+  background-color: #fff;
+  border-block-end: 1px solid #fff;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+}
+
+.presentation-card :hover,
+:after,
+:before {
+  transition: transform 0.3s ease-out;
+  box-sizing: border-box;
+}
+
+.ppt-card-name {
+  padding: 15px 0;
+  color: #3b73b3;
+  font-size: 14px;
+  letter-spacing: .6px;
+  font-weight: 700;
+  text-align: center;
+  font-family: MuseoSans;
+  line-height: 1.2;
+}
+.new-ppt-card-icon{
+  width: 140px;
+  max-width: 140px;
+}
