@@ -1,5 +1,45 @@
-.Preview {
-    flex:3;
-    background: #3b73b3;
+
+.template-heading{
+    color: #3b73b3;
+  }
+  .App-link {
+    color: #61dafb;
+  }
+  .tile-container{
+    width:70vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin:15px;
+  }
+  .tile{
+    width:200px;
+    height:150px;
+    box-shadow: 6px 7px 25px -1px grey;
+  }
+  .tile-disabled{
+    width:200px;
+    height:150px;
+    box-shadow: 6px 7px 25px -1px grey;
+    Color:grey;
+    text-align: center;
+  }
+  .tile :hover{
+    border: 1px solid darkgray;
+  }
+  .choose-template-button{
+    background-color: rgb(0, 136, 255);
+    color: white;
+    font-size: 20px;
+    padding:20px;
+    
+  }
+  .name-input{
+    margin-left: 10px;
+  }
+  .new-template-button{
     box-shadow: 2px 2px 20px 1px grey;   
-}
+      background-color: white;
+      height:70px;
+     
+  }
