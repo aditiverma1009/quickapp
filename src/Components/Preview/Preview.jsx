@@ -9,9 +9,10 @@ import './Preview.css';
 
 const RenderTemplateList = ({ list, addPage }) => {
   const renderList = list.map((item) => {
+    console.log("item", item);
     const { thumbnail } = item;
     return (
-      <div className="tile" onClick={() => { addPage(item); }}>
+      <div className="tile" onClick={() => { addPage(item); }} key={item.templateName}>
         <img src={thumbnail} width="100%" height="100%" />
       </div>
     );
