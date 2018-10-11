@@ -18,6 +18,24 @@ const templateList = [
       },
     },
   },
+  {
+    templateName: 'Template2',
+    thumbnail: template1Image,
+    defaultData: {
+      h1Text: 'Smaller heading',
+      h1Style: {
+        fontSize: '20px',
+        color: 'red',
+      },
+      liText: ['apple', 'banana', 'orange', 'grapes'],
+      liStyle: {
+        fontSize: '20px',
+      },
+      globalStyle: {
+        display: 'flex',
+      },
+    },
+  },
 ];
 
 export default templateList;
