@@ -15,7 +15,7 @@ const Header = () => (
 );
 
 Header.propTypes = {
-//   onSaveEvent: PropTypes.func.isRequired,
+  //   onSaveEvent: PropTypes.func.isRequired,
 };
 
 export default Header;

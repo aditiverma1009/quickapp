@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-responsive-modal';
+import New from './newTemplate.png';
 
 import templateList from '../Templates/templateList';
 import { addPage } from '../../redux/Actions';
@@ -12,8 +13,11 @@ const RenderTemplateList = ({ list, addPage }) => {
     console.log("item", item);
     const { thumbnail } = item;
     return (
-      <div className="tile" key={item.templateName}>
-        <img src={thumbnail} onClick={() => { addPage(item); }} width="100%" height="100%" />
+      <div className="presentation-card" onClick={() => { addPage(item); }} key={item.templateName}>
+        <div>
+          <center> <img className="ppt-card-icon" src={thumbnail} alt="logo" /></center>
+          <div className="ppt-card-name"> {item.templateName}</div>
+        </div>
       </div>
     );
   });
@@ -54,9 +58,10 @@ class Preview extends React.Component {
 
     return (
       <div className="Preview">
-        <div onClick={this.onOpenModal} className="new-template-button" >
-          <center><br></br><br></br>
-            <p>+</p></center>
+        <div onClick={this.onOpenModal} className="new-template-button" ><br></br><br></br>
+          <center><img src={New} alt="+" height="50px"
+            min-width="50px" />
+          </center>
         </div>
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="template-heading">
@@ -64,6 +69,12 @@ class Preview extends React.Component {
           </div>
           <div className="modal-size">
             <RenderTemplateList list={templateList} addPage={this.addPage} />
+            <div className="presentation-card" >
+              <div>
+                <center> <img className="ppt-card-icon" src={New} alt="logo" /></center>
+                <div className="ppt-card-name"> Add new template</div>
+              </div>
+            </div>
           </div>
         </Modal>
         <div className="allPages">
