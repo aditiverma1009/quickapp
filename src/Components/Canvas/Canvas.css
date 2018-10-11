@@ -1,4 +1,15 @@
 .Canvas {
     flex:7;
-    background-color: whitesmoke;
+    background-color: grey;
+  
+}
+.Canvasframe{
+    width:800px;
+    align-self: center;
+    height:500px;
+    float:center;
+    z-index: 10;
+    background-color: white;
+    margin: auto;
+    margin-top:20px; 
 }

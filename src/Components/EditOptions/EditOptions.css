@@ -1,4 +1,6 @@
 .EditOptions {
     flex:2;
     background: #999999;
+    z-index: -1;
+   
 }

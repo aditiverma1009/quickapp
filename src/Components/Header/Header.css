@@ -1,8 +1,15 @@
 .Header {
-    background: #3b73b3;
+    background:white;
+    border-bottom:1px solid black;
     flex:1;
     display: flex;
     flex-direction: row;
-    box-shadow: 1px 1px 20px 1px grey;
-    z-index: 2;
+}
+.Logo {
+    flex:1;
+    background:white;
+    
+}
+.ProjectName {
+    flex:10;
 }
