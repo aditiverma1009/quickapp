@@ -9,7 +9,14 @@ class Header extends Component {
     this.state = {};
   }
 
+  logOut = () => { 
+    window.localStorage.login = false; 
+    window.location.reload();
+  }
+
   render() {
+    const {logOut} = this;
+
     return (
       <div className="header-main">
         <Link to="/" style={{ textDecoration: 'none' }}><div className="back-button">&lt;</div></Link>
@@ -21,7 +28,8 @@ class Header extends Component {
           </div>
           <div className="quick">APP</div>
         </div>
-        <div className="signout">Sign Out</div>
+        <div className="signout" style={{ display: !(window.localStorage.login === 'true') ? 'none' : '' }} onClick={logOut}>Sign Out</div>
+        {/* = {!(window.localStorage.login === 'true') ? 'none' : ''} */}
       </div>
     );
   }

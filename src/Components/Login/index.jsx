@@ -6,7 +6,6 @@ import InputItems from './InputItems';
 import db from './database.json';
 import './Login.css';
 
-
 class Login extends React.Component {
     state = {
         userName: '',

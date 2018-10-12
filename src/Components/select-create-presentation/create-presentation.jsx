@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './create-presentation.css';
 import axios from 'axios';
 import PresentationCard from '../presentation-card/presentation-card';
@@ -13,7 +15,7 @@ class CreatePresentation extends Component {
   }
 
   componentWillMount() {
-    axios.get('https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp?userId=kjh').then((response) => {
+    axios.get(`https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp?userId=${userName}`).then((response) => {
       this.setState({
         presentations: response.data.body,
       });
@@ -38,4 +40,12 @@ class CreatePresentation extends Component {
   }
 }
 
-export default CreatePresentation;
+const mapStateToProps = () => ({
+  
+});
+
+const mapDispatcherToProps = () => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatcherToProps)(CreatePresentation);
