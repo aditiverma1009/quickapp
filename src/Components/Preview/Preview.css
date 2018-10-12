@@ -19,9 +19,9 @@
   }
   .template-heading{
     color: #3b73b3;
-      font-size: 15pt;
-      border-bottom: 3px solid #3b73b3;
-     
+    font-size: 15pt;
+    border-bottom: 3px solid #3b73b3;
+    text-align: center;     
   }
   /* .tile-disabled{
     width:200px;

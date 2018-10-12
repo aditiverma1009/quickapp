@@ -32,7 +32,7 @@ class NewPPTCard extends Component {
     return axios(options).then((result) => {
       this.props.history.push('/');
     }).then(()=>{
-      window.location.reload();
+      this.props.history.push('/');
     })
   }
 
@@ -89,7 +89,7 @@ class NewPPTCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  userName:state.loginReducer.userName,
+  userName: state.loginReducer.userName,
   projectList: state.templatesReducer.allProjects,
 });
 
