@@ -1,37 +1,36 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import './Canvas.css';
-import LineChart from '../LineChart/LineChart';
-import Feedback from '../Feedback/Feedback';
+import './Feedback.css';
+import LineChart from '../LineChart/LineChart'
 
-class Canvas extends React.Component {
+class Feedback extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       head: {
-        content: 'some content',
+        content: 'How is template 1?',
         fontSize: 14,
         fontFamily: 'Arial'
       },
       editMode: false,
       listItems: [
         {
-          content: 'this',
+          content: 'Very good',
           fontSize: 14,
           fontFamily: 'Arial'
         },
         {
-          content: 'is',
+          content: 'Good',
           fontSize: 14,
           fontFamily: 'Arial'
         },
         {
-          content: 'a',
+          content: 'Bad',
           fontSize: 14,
           fontFamily: 'Arial'
         },
         {
-          content: 'listItem',
+          content: 'Very bad',
           fontSize: 14,
           fontFamily: 'Arial'
         }
@@ -40,27 +39,27 @@ class Canvas extends React.Component {
     };
   }
 
-  componentWillMount () {
-    const {selectedPageIndex, template} = this.props;
-    const {head, listItems} = this.props.pages[selectedPageIndex]
-    this.setState({
-      ...this.state,
-      head,
-      listItems,
-      template
-    })
-  }
+  // componentWillMount () {
+  //   const {selectedPageIndex, template} = this.props;
+  //   const {head, listItems} = this.props.pages[selectedPageIndex]
+  //   this.setState({
+  //     ...this.state,
+  //     head,
+  //     listItems,
+  //     template
+  //   })
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    const {selectedPageIndex, template} = nextProps
-    const {head, listItems} = this.props.pages[selectedPageIndex]
-    this.setState({
-      ...this.state,
-      head,
-      listItems,
-      template
-    })
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   const {selectedPageIndex, template} = nextProps
+  //   const {head, listItems} = this.props.pages[selectedPageIndex]
+  //   this.setState({
+  //     ...this.state,
+  //     head,
+  //     listItems,
+  //     template
+  //   })
+  // }
 
   editContentTrue = (tagID) => {
     this.setState({
@@ -131,12 +130,12 @@ class Canvas extends React.Component {
   }
 
   bulletList = () => {
-    const {editMode, head, listItems, tagID} = this.state;
+    const { editMode, head, listItems, tagID } = this.state;
     return (
       <div className="Canvas">
         <div className="Canvasframe">
           {!editMode ?
-            <h1 style={{ fontSize: Number(head.fontSize), fontFamily: head.fontFamily, padding: "80px 0px 0px 80px" }} onClick={() => this.editContentTrue('h1')}>{head.content}</h1> :
+            <h1 style={{ fontSize: Number(head.fontSize), fontFamily: head.fontFamily, padding: "80px 0px 0px 110px" }} onClick={() => this.editContentTrue('h1')}>{head.content}</h1> :
             (tagID === 'h1' ? <div className="EditModeInputFrame-heading">
               <input style={{ fontSize: Number(head.fontSize), outline: 'none', border: 0, margin: "80px 0px 0px 80px", fontWeight: "bold", fontFamily: head.fontFamily }}
                 type="text"
@@ -167,7 +166,7 @@ class Canvas extends React.Component {
           }
           <ul>
             {!editMode ?
-              <li style={{ margin: "30px 0px 0px 120px", fontSize: Number(listItems[0].fontSize), fontFamily: listItems[0].fontFamily }} onClick={() => this.editContentTrue('list0')}>{listItems[0].content}</li> :
+              <div><input type="radio" name="question" style={{ margin: "30px 0px 0px 120px", }} /><label style={{ margin: "30px 0px 0px 20px", fontSize: Number(listItems[0].fontSize), fontFamily: listItems[0].fontFamily }} onClick={() => this.editContentTrue('list0')}>{listItems[0].content}</label></div> :
               (
                 tagID === 'list0' ?
                   <div className="EditModeInputFrame">
@@ -196,11 +195,11 @@ class Canvas extends React.Component {
                       </select>
                     </span>
                   </div> :
-                  <li style={{ margin: "30px 0px 0px 120px", fontSize: Number(listItems[0].fontSize), fontFamily: listItems[0].fontFamily }} onClick={() => this.editContentTrue('list0')}>{listItems[0].content}</li>
+                  <div><input name="question" type="radio" value="very good" style={{ margin: "30px 0px 0px 120px", }} /><label style={{ margin: "30px 0px 0px 20px", fontSize: Number(listItems[0].fontSize), fontFamily: listItems[0].fontFamily }} onClick={() => this.editContentTrue('list0')}>{listItems[0].content}</label></div>
               )
             }
             {!editMode ?
-              <li style={{ margin: "30px 0px 0px 120px", fontSize: Number(listItems[1].fontSize), fontFamily: listItems[1].fontFamily }} onClick={() => this.editContentTrue('list1')}>{listItems[1].content}</li> :
+              <div><input type="radio" name="question" style={{ margin: "30px 0px 0px 120px", }} /><label style={{ margin: "30px 0px 0px 20px", fontSize: Number(listItems[1].fontSize), fontFamily: listItems[1].fontFamily }} onClick={() => this.editContentTrue('list1')}>{listItems[1].content}</label></div> :
               (
                 tagID === 'list1' ?
                   <div className="EditModeInputFrame">
@@ -229,11 +228,11 @@ class Canvas extends React.Component {
                       </select>
                     </span>
                   </div> :
-                  <li style={{ margin: "30px 0px 0px 120px", fontSize: Number(listItems[1].fontSize), fontFamily: listItems[1].fontFamily }} onClick={() => this.editContentTrue('list1')}>{listItems[1].content}</li>
+                  <div><input type="radio" name="question" style={{ margin: "30px 0px 0px 120px", }} /><label style={{ margin: "30px 0px 0px 20px", fontSize: Number(listItems[1].fontSize), fontFamily: listItems[1].fontFamily }} onClick={() => this.editContentTrue('list1')}>{listItems[1].content}</label></div>
               )
             }
             {!editMode ?
-              <li style={{ margin: "30px 0px 0px 120px", fontSize: Number(listItems[2].fontSize), fontFamily: listItems[2].fontFamily }} onClick={() => this.editContentTrue('list2')}>{listItems[2].content}</li> :
+              <div><input type="radio" name="question" style={{ margin: "30px 0px 0px 120px", }} /><label style={{ margin: "30px 0px 0px 20px", fontSize: Number(listItems[2].fontSize), fontFamily: listItems[2].fontFamily }} onClick={() => this.editContentTrue('list2')}>{listItems[2].content}</label></div> :
               (
                 tagID === 'list2' ?
                   <div className="EditModeInputFrame">
@@ -262,11 +261,11 @@ class Canvas extends React.Component {
                       </select>
                     </span>
                   </div> :
-                  <li style={{ margin: "30px 0px 0px 120px", fontSize: Number(listItems[2].fontSize), fontFamily: listItems[1].fontFamily }} onClick={() => this.editContentTrue('list2')}>{listItems[2].content}</li>
+                  <div><input type="radio" name="question" style={{ margin: "30px 0px 0px 120px", }} /><label style={{ margin: "30px 0px 0px 20px", fontSize: Number(listItems[2].fontSize), fontFamily: listItems[2].fontFamily }} onClick={() => this.editContentTrue('list2')}>{listItems[2].content}</label></div>
               )
             }
             {!editMode ?
-              <li style={{ margin: "30px 0px 0px 120px", fontSize: Number(listItems[3].fontSize), fontFamily: listItems[3].fontFamily }} onClick={() => this.editContentTrue('list3')}>{listItems[3].content}</li> :
+              <div><input type="radio" name="question" style={{ margin: "30px 0px 0px 120px", }} /><label style={{ margin: "30px 0px 0px 20px", fontSize: Number(listItems[3].fontSize), fontFamily: listItems[3].fontFamily }} onClick={() => this.editContentTrue('list3')}>{listItems[3].content}</label></div> :
               (
                 tagID === 'list3' ?
                   <div className="EditModeInputFrame">
@@ -299,6 +298,10 @@ class Canvas extends React.Component {
               )
             }
           </ul>
+          <div className="QuestionsArea">
+        <div>Have any questions?</div>
+        <textarea></textarea>
+        </div>
         </div>
         <div>
           <button className="save-button" onClick={this.syncWithDB}>Save</button>
@@ -307,33 +310,24 @@ class Canvas extends React.Component {
     );
   }
 
-  syncWithDB = () => {
-    const {pages, selectedPageIndex, template} = this.props;
-    const tempArr = pages;
-    tempArr[selectedPageIndex].head = this.state.head
-    tempArr[selectedPageIndex].listItems = this.state.listItems
-    tempArr[selectedPageIndex].template = template
-    this.props.syncWithDB(tempArr)
-  }
+  // syncWithDB = () => {
+  //   const { pages, selectedPageIndex, template } = this.props;
+  //   const tempArr = pages;
+  //   tempArr[selectedPageIndex].head = this.state.head
+  //   tempArr[selectedPageIndex].listItems = this.state.listItems
+  //   tempArr[selectedPageIndex].template = template
+  //   this.props.syncWithDB(tempArr)
+  // }
 
   render() {
-    const {template} = this.props;
-    if(template === 'Bullet List') {
+    const { template } = this.props;
       return this.bulletList()
-    } else if(template === 'Feedback') {
-      return <Feedback />
-    }
-    return (<div className="Canvas">
-    <div className="Canvasframe">
-      <LineChart />
-    </div>
-  </div>)
   }
 }
 
 
-Canvas.propTypes = {
+Feedback.propTypes = {
   fontSize: PropTypes.number.isRequired
 };
 
-export default Canvas
+export default Feedback
