@@ -41,7 +41,6 @@ class Canvas extends React.Component {
 
   componentWillMount () {
     const {selectedPageIndex, template} = this.props;
-    const {selectedPageIndex} = this.props;
     if(this.props.pages.length==0){
       return;
     }
@@ -318,6 +317,9 @@ class Canvas extends React.Component {
       return;
     }
     const {pages, selectedPageIndex, template} = this.props;
+    if(pages.length===0){
+      return;
+    }
     const tempArr = pages;
     tempArr[selectedPageIndex].head = this.state.head
     tempArr[selectedPageIndex].listItems = this.state.listItems

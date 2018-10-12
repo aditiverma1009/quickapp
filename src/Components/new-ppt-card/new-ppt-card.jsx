@@ -61,7 +61,10 @@ class NewPPTCard extends Component {
       }
     }
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> Get projects working
   render() {
 
     const { open } = this.state;
