@@ -16,7 +16,6 @@ class WorkSpace extends React.Component {
   }
 
   renderingPage = () => {
-    // window.localStorage.login = false;
     if (window.localStorage.login === "true") {
       return (
         <Switch>
