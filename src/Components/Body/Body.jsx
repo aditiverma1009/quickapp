@@ -48,12 +48,12 @@ export default class Body extends React.Component {
         pages: newPages
         }
     }
-    axios(options).then((result) => {
+    return axios(options).then((result) => {
       this.setState({
         ...this.state,
         pages: newPages
       })
-      console.log(result.data)
+      this.props.history.push('/');
     })
   }
 
