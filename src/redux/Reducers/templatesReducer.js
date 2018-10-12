@@ -18,7 +18,6 @@ const templateReducer = (prevState = defaultValue, action) => {
         thumbnail,
       };
       pages.push(pageData);
-      console.log(pages);
       return {
         ...prevState,
         pages,
