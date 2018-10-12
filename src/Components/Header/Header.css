@@ -27,7 +27,7 @@
     align-items: center;
     color: #fff;
     font-weight: 300;
-    min-height: 45px;
+    min-height: 77px;
     height: 6.5vh;
     font-family:arial;
     font-weight: 700;
@@ -37,7 +37,10 @@
     align-items: center;
 
   }
-  
+  .quick{
+    display: flex;
+    align-items: center;
+  }
   .app-icon {
   max-height: 6.5vh;
   /* height: 6.5vh */

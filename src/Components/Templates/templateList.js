@@ -9,7 +9,7 @@ const templateList = [
       h1Style: {
         fontSize: '40px',
       },
-      liText: ['this', 'is', 'list of', 'list items'],
+      liText: ['This', 'is', 'list of', 'list items'],
       liStyle: {
         fontSize: '20px',
       },

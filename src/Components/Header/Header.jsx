@@ -21,12 +21,12 @@ class Header extends Component {
       <div className="header-main">
         <Link to="/" style={{ textDecoration: 'none' }}><div className="back-button">&lt;</div></Link>
         <div className="logo-position">
-          <div>QUICK</div>
+          <div className="quick">QUICK</div>
           <div>
             {' '}
-            <img className="app-icon" src={logo} />
+            <img className="app-icon" src={logo} alt="quickapp-logo" />
           </div>
-          <div>APP</div>
+          <div className="quick">APP</div>
         </div>
         <div className="signout" style={{ display: !(window.localStorage.login === 'true') ? 'none' : '' }} onClick={logOut}>Sign Out</div>
         {/* = {!(window.localStorage.login === 'true') ? 'none' : ''} */}
