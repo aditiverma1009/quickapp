@@ -6,7 +6,6 @@ import InputItems from './InputItems';
 import db from './database.json';
 import './Login.css';
 
-
 class Login extends React.Component {
     state = {
         userName: '',
@@ -22,7 +21,6 @@ class Login extends React.Component {
 
     onSubmit = () => {
         const { userName, password } = this.state;
-        console.log("onSubmit");
         if (db[userName] === password){
             window.localStorage.login = true;
             this.props.login(userName, password);
