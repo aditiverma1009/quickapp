@@ -2,6 +2,7 @@
 const defaultValue = {
   pages: [],
   displayData: {},
+  allProjects: [{ projectID: 'arr' }, { projectID: 'adi' }],
 };
 
 const templateReducer = (prevState = defaultValue, action) => {
@@ -21,6 +22,22 @@ const templateReducer = (prevState = defaultValue, action) => {
       return {
         ...prevState,
         pages,
+      };
+    }
+
+    case 'ADD_PROJECT': {
+      const { allProjects } = prevState;
+      const projectID = action.payload;
+      const projectData = {
+        projectID,
+      };
+      console.log('projectID', projectData);
+      console.log('projectdata', projectData);
+      allProjects.push(projectData);
+      console.log('allProjects', allProjects);
+      return {
+        ...prevState,
+        allProjects,
       };
     }
 

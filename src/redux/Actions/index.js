@@ -10,3 +10,8 @@ export const login = (userName, password) => ({
     password,
   },
 });
+
+export const addProject = newProject => ({
+  type: 'ADD_PROJECT',
+  payload: newProject,
+});
