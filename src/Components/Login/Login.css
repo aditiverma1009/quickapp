@@ -1,0 +1,42 @@
+.login {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #3b73b3;
+  color: white;
+  height: 100%;
+  font-size: 25px;
+  font-family: arial;
+}
+
+.loginMessage {
+  background-color: white;
+}
+
+.login-border {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 60%;
+  width: 50%;
+}
+
+.login-login {
+  text-align: center;
+}
+
+.login-submit {
+  font-size: 20px;
+  color: white;
+  background: orange;
+  cursor: pointer;
+}
+
+.login-goBack {
+  border: 2px solid white;
+  align-self: center;
+  padding: 5px;
+  margin: 15px;
+}
