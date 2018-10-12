@@ -23,7 +23,7 @@ class Login extends React.Component {
     onSubmit = () => {
         const { userName, password } = this.state;
         console.log("onSubmit");
-        if (db[userName] === password){
+        if (password !== '') {
             window.localStorage.login = true;
             this.props.login(userName, password);
             this.props.history.push("/");
