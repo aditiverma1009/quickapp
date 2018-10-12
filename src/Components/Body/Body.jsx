@@ -13,27 +13,31 @@ export default class Body extends React.Component {
     };
   }
 
-  selectedPage = (selectedPageIndex) => {
+  selectedPage = (selectedPageIndex, template) => {
     this.setState({
       ...this.state,
       selectedPageIndex,
+      template
     })
   }
 
   componentWillMount() {
     const { pages } = this.props.location.state;
+    const {selectedPageIndex} = this.state;
     this.setState({
       ...this.state,
-      pages
+      pages,
+      template: pages[selectedPageIndex].template
     })
   }
 
-  addPage = (newPageData) => {
+  addPage = (newPageData, template) => {
     const tempArr = this.state.pages;
     tempArr.push(newPageData)
     this.setState({
       ...this.state,
-      pages: tempArr
+      pages: tempArr,
+      template
     })
   }
 
@@ -59,7 +63,7 @@ export default class Body extends React.Component {
 
   render() {
     const { userId, projectId } = this.props.location.state;
-    const {selectedPageIndex, pages} = this.state;
+    const {selectedPageIndex, pages, template} = this.state;
     return (
       <div className="BodyArea">
         <Canvas
@@ -68,13 +72,14 @@ export default class Body extends React.Component {
           projectId={projectId}
           selectedPageIndex={selectedPageIndex}
           syncWithDB={(newPages) => this.syncWithDB(newPages)}
+          template={template}
         />
         <Preview
           pages={pages}
           userId={userId}
           projectId={projectId}
-          selectedPage={(selectedPageIndex) => this.selectedPage(selectedPageIndex)}
-          addPage={(newPageData) => this.addPage(newPageData)}
+          selectedPage={(selectedPageIndex, template) => this.selectedPage(selectedPageIndex, template)}
+          addPage={(newPageData, template) => this.addPage(newPageData, template)}
         />
       </div>
     );

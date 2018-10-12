@@ -9,12 +9,12 @@ import thumbnail from '../Templates/assets/Template1.jpeg';
 import './Preview.css';
 
 const RenderTemplateList = ({ list, addPage }) => {
-  const renderList = list.map((item) => {
+  const renderList = list.map((item, index) => {
     return (
-      <div className="presentation-card" onClick={() => { addPage(item); }} key={item.templateName}>
+      <div className="presentation-card" onClick={(index) => { addPage(item, index + 1); }} key={item.templateName}>
         <div>
           <center> <img className="ppt-card-icon" src={thumbnail} alt="logo" /></center>
-          <div className="ppt-card-name"> {item.templateName}</div>
+          <div className="ppt-card-name">{item.templateName}</div>
         </div>
       </div>
     );
@@ -38,7 +38,7 @@ class Preview extends React.Component {
     this.setState({ open: false });
   };
 
-  addPage = (pageDetails) => {
+  addPage = (template) => {
     this.setState({ open: false });
     const newPageData = {
       head: {
@@ -67,16 +67,21 @@ class Preview extends React.Component {
           fontSize: 14,
           fontFamily: 'Arial'
         }
-      ]
+      ],
+      template: template.templateName
     }
-    this.props.addPage(newPageData);
+    this.props.addPage(newPageData, template.templateName);
+  }
+
+  selectedPage = (index, step) => {
+    this.props.selectedPage(index, step.template)
   }
 
   render() {
     const { open } = this.state;
     const {pages} = this.props
     const allPages = pages.map((step, index) => (
-      <div className="displayPage" onClick={() => this.props.selectedPage(index)}>
+      <div className="displayPage" onClick={() => this.selectedPage(index, step)}>
         <center><p>Page {index + 1} <br /> {step.template} </p></center>
       </div>
     ));
@@ -93,7 +98,7 @@ class Preview extends React.Component {
             <h2>Templates</h2>
           </div>
           <div className="modal-size">
-            <RenderTemplateList list={this.props.pages} addPage={this.addPage} />
+            <RenderTemplateList list={templateList} addPage={this.addPage} />
             <div className="presentation-card" >
               <div>
                 <center> <img className="ppt-card-icon" src={New} alt="logo" /></center>

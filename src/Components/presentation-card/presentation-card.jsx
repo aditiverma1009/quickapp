@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './presentation-card.css';
 import { Link } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
 import logo from './logo.png';
 
 class PresentationCard extends Component {
@@ -11,10 +10,20 @@ class PresentationCard extends Component {
   }
 
   render() {
-    const { pages, userId, projectId } = this.props;
+    const {
+      pages, userId, projectId,
+    } = this.props;
     return (
       <div className="presentation-card">
-        <Link to={{ pathname: '/dashboard', state: { pages, userId, projectId } }} style={{ textDecoration: 'none' }}>
+        <Link
+          to={{
+            pathname: '/dashboard',
+            state: {
+              pages, userId, projectId,
+            },
+          }}
+          style={{ textDecoration: 'none' }}
+        >
           <div>
             <img className="ppt-card-icon" src={logo} alt="logo" />
             <div className="ppt-card-name">{this.props.name}</div>
@@ -26,7 +35,6 @@ class PresentationCard extends Component {
 }
 
 PresentationCard.propTypes = {
-  slides: PropTypes.array.isRequired,
 };
 
 export default PresentationCard;

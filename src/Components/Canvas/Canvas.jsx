@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import './Canvas.css';
+import LineChart from '../LineChart/LineChart'
 
 class Canvas extends React.Component {
   constructor(props) {
@@ -33,27 +34,30 @@ class Canvas extends React.Component {
           fontSize: 14,
           fontFamily: 'Arial'
         }
-      ]
+      ],
+      template: 'Bullet List'
     };
   }
 
-  componentWillMount() {
-    const { selectedPageIndex } = this.props;
-    const { head, listItems } = this.props.pages[selectedPageIndex]
+  componentWillMount () {
+    const {selectedPageIndex, template} = this.props;
+    const {head, listItems} = this.props.pages[selectedPageIndex]
     this.setState({
       ...this.state,
       head,
-      listItems
+      listItems,
+      template
     })
   }
 
   componentWillReceiveProps(nextProps) {
-    const { selectedPageIndex } = nextProps
-    const { head, listItems } = this.props.pages[selectedPageIndex]
+    const {selectedPageIndex, template} = nextProps
+    const {head, listItems} = this.props.pages[selectedPageIndex]
     this.setState({
       ...this.state,
       head,
-      listItems
+      listItems,
+      template
     })
   }
 
@@ -125,16 +129,8 @@ class Canvas extends React.Component {
     }
   }
 
-  syncWithDB = () => {
-    const { pages, selectedPageIndex } = this.props;
-    const tempArr = pages;
-    tempArr[selectedPageIndex].head = this.state.head
-    tempArr[selectedPageIndex].listItems = this.state.listItems
-    this.props.syncWithDB(tempArr)
-  }
-
-  render() {
-    const { editMode, head, listItems, tagID } = this.state;
+  bulletList = () => {
+    const {editMode, head, listItems, tagID} = this.state;
     return (
       <div className="Canvas">
         <div className="Canvasframe">
@@ -308,6 +304,27 @@ class Canvas extends React.Component {
         </div>
       </div>
     );
+  }
+
+  syncWithDB = () => {
+    const {pages, selectedPageIndex, template} = this.props;
+    const tempArr = pages;
+    tempArr[selectedPageIndex].head = this.state.head
+    tempArr[selectedPageIndex].listItems = this.state.listItems
+    tempArr[selectedPageIndex].template = template
+    this.props.syncWithDB(tempArr)
+  }
+
+  render() {
+    const {template} = this.props;
+    if(template === 'Bullet List') {
+      return this.bulletList()
+    }
+    return (<div className="Canvas">
+    <div className="Canvasframe">
+      <LineChart />
+    </div>
+  </div>)
   }
 }
 

@@ -15,7 +15,7 @@ class CreatePresentation extends Component {
   }
 
   componentWillMount() {
-    axios.get(`https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp?userId=${userName}`).then((response) => {
+    axios.get(`https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp?userId=test1`).then((response) => {
       this.setState({
         presentations: response.data.body,
       });
