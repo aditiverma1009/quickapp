@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import './Canvas.css';
+import './Feedback.css';
 import LineChart from '../LineChart/LineChart'
 
 class Feedback extends React.Component {
@@ -298,6 +298,10 @@ class Feedback extends React.Component {
               )
             }
           </ul>
+          <div className="QuestionsArea">
+        <div>Have any questions?</div>
+        <textarea></textarea>
+        </div>
         </div>
         <div>
           <button className="save-button" onClick={this.syncWithDB}>Save</button>
@@ -317,19 +321,12 @@ class Feedback extends React.Component {
 
   render() {
     const { template } = this.props;
-    if (template === 'Bullet List') {
       return this.bulletList()
-    }
-    return (<div className="Canvas">
-      <div className="Canvasframe">
-        <LineChart />
-      </div>
-    </div>)
   }
 }
 
 
-Canvas.propTypes = {
+Feedback.propTypes = {
   fontSize: PropTypes.number.isRequired
 };
 
