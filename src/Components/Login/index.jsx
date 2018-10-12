@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import InputItems from './InputItems';
 import db from './database.json';
 import './Login.css';
+
 
 class Login extends React.Component {
     state = {
@@ -25,32 +28,12 @@ class Login extends React.Component {
         } else {
             alert("Invalid credentials");
         }
-        // const payload = {
-        //     userName,
-        //     password,
-        // };
-        // const request = {
-        //     method: 'POST',
-        //     body: JSON.stringify(payload),
-        // };
-        // fetch('/login', request)
-        //     .then((res) => {
-        //         const code = res.status;
-        //         res.json().then((reply) => {
-        //             if (code !== 200) {
-        //                 window.alert(reply.message);
-        //             } else {
-        //                 window.localStorage.setItem('token', reply.token);
-        //                 this.props.history.push('/');
-        //             }
-        //         });
-        //     });
     }
 
     render() {
         const { userName, password } = this.state;
         const { onChange, onSubmit } = this;
-
+        // window.localStorage.login = true;
         if (window.localStorage.login === "true") {
             return (
                 <div className="login">
@@ -66,7 +49,7 @@ class Login extends React.Component {
                 <div className="login-border">
                     <div className="login-login">
                         LOGIN
-                            </div>
+                    </div>
                     <div className="login-inputItems">
                         <InputItems
                             name="userName"

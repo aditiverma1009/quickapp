@@ -5,13 +5,8 @@ const InputItems = ({
   name, value, title, type, onChange,
 }) => (
   <div className="input">
-    <div className="input-title">
-      {title}
-      {' '}
-    </div>
-    <input className="input-inputFields" name={name} value={value} type={type} onChange={onChange} />
+    <input className="input-inputFields" name={name} value={value} placeholder={title} type={type} onChange={onChange} />
   </div>
 );
-
 
 export default InputItems;
