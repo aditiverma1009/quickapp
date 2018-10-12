@@ -53,7 +53,6 @@ class NewPPTCard extends Component {
     const { open } = this.state;
     const { projectID } = this.state;
     const { acceptedPassword } = this.state;
-    // console.log('pro',projectID)
     return (
       <div className="presentation-card">
         <img className="new-ppt-card-icon" src={logo} alt="logo" onClick={this.onOpenModal} />
