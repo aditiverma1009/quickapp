@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import './Canvas.css';
-import LineChart from '../LineChart/LineChart'
+import LineChart from '../LineChart/LineChart';
+import Feedback from '../Feedback/Feedback';
 
 class Canvas extends React.Component {
   constructor(props) {
@@ -319,6 +320,8 @@ class Canvas extends React.Component {
     const {template} = this.props;
     if(template === 'Bullet List') {
       return this.bulletList()
+    } else if(template === 'Feedback') {
+      return <Feedback />
     }
     return (<div className="Canvas">
     <div className="Canvasframe">
