@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import './create-presentation.css';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import PresentationCard from '../presentation-card/presentation-card';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import NewPPTCard from '../new-ppt-card/new-ppt-card';
@@ -17,7 +16,7 @@ class CreatePresentation extends Component {
   }
 
   componentWillMount() {
-    axios.get(`https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp?userId=test1`).then((response) => {
+    axios.get(`https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp?userId=${this.props.userName}`).then((response) => {
       this.setState({
         presentations: response.data.body,
       });
