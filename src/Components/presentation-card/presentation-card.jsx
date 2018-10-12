@@ -26,7 +26,6 @@ class PresentationCard extends Component {
 }
 
 PresentationCard.propTypes = {
-  slides: PropTypes.array.isRequired,
 };
 
 export default PresentationCard;

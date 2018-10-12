@@ -39,6 +39,9 @@ class Canvas extends React.Component {
 
   componentWillMount () {
     const {selectedPageIndex} = this.props;
+    if(this.props.pages.length==0){
+      return;
+    }
     const {head, listItems} = this.props.pages[selectedPageIndex]
     this.setState({
       ...this.state,
@@ -49,6 +52,9 @@ class Canvas extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const {selectedPageIndex} = nextProps
+    if(this.props.pages.length==0){
+      return;
+    }
     const {head, listItems} = this.props.pages[selectedPageIndex]
     this.setState({
       ...this.state,
@@ -128,6 +134,9 @@ class Canvas extends React.Component {
   syncWithDB = () => {
     const {pages, selectedPageIndex} = this.props;
     const tempArr = pages;
+    if(pages.length==0){
+      return;
+    }
     tempArr[selectedPageIndex].head = this.state.head
     tempArr[selectedPageIndex].listItems = this.state.listItems
     this.props.syncWithDB(tempArr)
@@ -313,7 +322,6 @@ class Canvas extends React.Component {
 
 
 Canvas.propTypes = {
-  fontSize: PropTypes.number.isRequired
 };
 
 export default Canvas

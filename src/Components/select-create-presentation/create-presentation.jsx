@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import './create-presentation.css';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import PresentationCard from '../presentation-card/presentation-card';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import NewPPTCard from '../new-ppt-card/new-ppt-card';
 
 class CreatePresentation extends Component {
@@ -40,12 +42,12 @@ class CreatePresentation extends Component {
   }
 }
 
-const mapStateToProps = () => ({
-  
+
+const mapStateToProps = (state) => ({
+  userName:state.loginReducer.userName,
 });
 
-const mapDispatcherToProps = () => ({
+const mapDispatcherToProps = (dispatch) => ({
 
 });
-
-export default connect(mapStateToProps, mapDispatcherToProps)(CreatePresentation);
+export default withRouter(connect(mapStateToProps, mapDispatcherToProps)(CreatePresentation));

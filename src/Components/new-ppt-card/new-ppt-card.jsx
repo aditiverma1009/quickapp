@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './new-ppt-card.css';
 import Modal from 'react-responsive-modal';
 import logo from './logo.png';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
@@ -16,6 +17,24 @@ class NewPPTCard extends Component {
       projectID: '',
     };
   };
+
+  syncProjectsIntoDB = (newProject) => {
+    const {userName} = this.props;
+    const options = {
+      url: 'https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp',
+      method: 'put',
+      data: {
+        userId:userName,
+        projectId: newProject,
+        pages: [],
+        }
+    }
+    return axios(options).then((result) => {
+      this.props.history.push('/');
+    }).then(()=>{
+      window.location.reload();
+    })
+  }
 
   onOpenModal = () => {
     this.setState({ open: true });
@@ -42,12 +61,6 @@ class NewPPTCard extends Component {
       }
     }
   }
-  onProjectSubmit=()=>{
-    let {projectID}=this.state;
-    let {acceptedPassword}=this.state;
-
-  }
-
   render() {
 
     const { open } = this.state;
@@ -63,7 +76,7 @@ class NewPPTCard extends Component {
             <input type="text" name="project-name" onChange={(event)=>this.onProjectNameChange(event)} /> 
             <div className={this.state.projectID.length!=0?'VisibleStatus':'InvisibleStatus'}>{this.state.acceptedPassword  ? '' : 'This Project Name is taken'}</div>
             <br/>
-            <button type="submit" disabled={!this.state.acceptedPassword || this.state.projectID.length==0} onClick={()=>this.props.addProject(projectID)}>Submit</button>
+            <button type="submit" disabled={!this.state.acceptedPassword || this.state.projectID.length==0} onClick={()=>{ this.props.addProject(projectID); this.syncProjectsIntoDB(projectID)}}>Submit</button>
           </div>
         </Modal>
       </div>
@@ -72,6 +85,7 @@ class NewPPTCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  userName:state.loginReducer.userName,
   projectList: state.templatesReducer.allProjects,
 });
 
