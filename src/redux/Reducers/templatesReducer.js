@@ -31,10 +31,7 @@ const templateReducer = (prevState = defaultValue, action) => {
       const projectData = {
         projectID,
       };
-      console.log('projectID', projectData);
-      console.log('projectdata', projectData);
       allProjects.push(projectData);
-      console.log('allProjects', allProjects);
       return {
         ...prevState,
         allProjects,
