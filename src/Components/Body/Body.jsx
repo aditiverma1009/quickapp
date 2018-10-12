@@ -22,8 +22,12 @@ export default class Body extends React.Component {
   }
 
   componentWillMount() {
-    const { pages } = this.props.location.state;
-    const {selectedPageIndex} = this.state;
+ 
+    let { pages } = this.props.location.state;
+    if (pages.length===0) {
+      return;
+    }
+    let {selectedPageIndex} = this.state;
     this.setState({
       ...this.state,
       pages,

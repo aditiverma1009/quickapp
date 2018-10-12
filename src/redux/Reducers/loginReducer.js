@@ -1,7 +1,7 @@
 
 const defaultValue = {
-  userName: '',
-  password: '',
+  userName: 'test3',
+  password: '987',
 };
 
 const loginReducer = (prevState = defaultValue, action) => {
