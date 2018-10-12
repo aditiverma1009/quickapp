@@ -30,6 +30,7 @@ class NewPPTCard extends Component {
         }
     }
     return axios(options).then((result) => {
+      this.onCloseModal();
       this.props.history.push('/');
     }).then(()=>{
       this.props.history.push('/');
@@ -61,12 +62,8 @@ class NewPPTCard extends Component {
       }
     }
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> Get projects working
   render() {
-
     const { open } = this.state;
     const { projectID } = this.state;
     const { acceptedPassword } = this.state;
