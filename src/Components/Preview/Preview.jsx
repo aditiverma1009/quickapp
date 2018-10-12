@@ -5,12 +5,11 @@ import New from './newTemplate.png';
 
 import templateList from '../Templates/templateList';
 import { addPage } from '../../redux/Actions';
-
+import thumbnail from '../Templates/assets/Template1.jpeg';
 import './Preview.css';
 
 const RenderTemplateList = ({ list, addPage }) => {
   const renderList = list.map((item) => {
-    const { thumbnail } = item;
     return (
       <div className="presentation-card" onClick={() => { addPage(item); }} key={item.templateName}>
         <div>
@@ -41,15 +40,43 @@ class Preview extends React.Component {
 
   addPage = (pageDetails) => {
     this.setState({ open: false });
-    return this.props.addPage(pageDetails);
+    const newPageData = {
+      head: {
+        content: 'some content',
+        fontSize: 14,
+        fontFamily: 'Arial'
+      },
+      listItems: [
+        {
+          content: 'this',
+          fontSize: 14,
+          fontFamily: 'Arial'
+        },
+        {
+          content: 'is',
+          fontSize: 14,
+          fontFamily: 'Arial'
+        },
+        {
+          content: 'a',
+          fontSize: 14,
+          fontFamily: 'Arial'
+        },
+        {
+          content: 'listItem',
+          fontSize: 14,
+          fontFamily: 'Arial'
+        }
+      ]
+    }
+    this.props.addPage(newPageData);
   }
 
   render() {
-
     const { open } = this.state;
-    const pages = this.props.pages.slice();
+    const {pages} = this.props
     const allPages = pages.map((step, index) => (
-      <div className="displayPage">
+      <div className="displayPage" onClick={() => this.props.selectedPage(index)}>
         <center><p>Page {index + 1} <br /> {step.template} </p></center>
       </div>
     ));
@@ -66,7 +93,7 @@ class Preview extends React.Component {
             <h2>Templates</h2>
           </div>
           <div className="modal-size">
-            <RenderTemplateList list={templateList} addPage={this.addPage} />
+            <RenderTemplateList list={this.props.pages} addPage={this.addPage} />
             <div className="presentation-card" >
               <div>
                 <center> <img className="ppt-card-icon" src={New} alt="logo" /></center>
@@ -87,11 +114,9 @@ Preview.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  pages: state.templatesReducer.pages
 });
 
 const mapDispatcherToProps = (dispatch) => ({
-  addPage: (pageDetails) => dispatch(addPage(pageDetails)),
 });
 
 export default connect(mapStateToProps, mapDispatcherToProps)(Preview);

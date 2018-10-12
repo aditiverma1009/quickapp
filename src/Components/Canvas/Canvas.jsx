@@ -1,9 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addPage } from '../../redux/Actions';
 import {PropTypes} from 'prop-types';
-import axios from 'axios';
-
 import './Canvas.css';
 
 class Canvas extends React.Component {
@@ -42,14 +38,22 @@ class Canvas extends React.Component {
   }
 
   componentWillMount () {
-    axios.get("https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp?userId=jyoti_prakash_dutta").then((response) => {
-      console.log(response.data.body[0]);
-      const {head, listItems} = response.data.body[0]
-      this.setState({
-        ...this.state,
-        head,
-        listItems
-      })
+    const {selectedPageIndex} = this.props;
+    const {head, listItems} = this.props.pages[selectedPageIndex]
+    this.setState({
+      ...this.state,
+      head,
+      listItems
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {selectedPageIndex} = nextProps
+    const {head, listItems} = this.props.pages[selectedPageIndex]
+    this.setState({
+      ...this.state,
+      head,
+      listItems
     })
   }
 
@@ -122,20 +126,11 @@ class Canvas extends React.Component {
   }
 
   syncWithDB = () => {
-    const options = {
-      url: 'https://1euk0sb2a2.execute-api.ap-south-1.amazonaws.com/hackathon-demo/quickapp',
-      method: 'put',
-      data: {
-        userId: "jyoti_prakash_dutta",
-        pages: [{
-          head: this.state.head,
-          listItems: this.state.listItems
-        }]
-      }
-    }
-    axios(options).then((result) => {
-      console.log('result', result)
-    })
+    const {pages, selectedPageIndex} = this.props;
+    const tempArr = pages;
+    tempArr[selectedPageIndex].head = this.state.head
+    tempArr[selectedPageIndex].listItems = this.state.listItems
+    this.props.syncWithDB(tempArr)
   }
 
   render() {
@@ -321,12 +316,4 @@ Canvas.propTypes = {
   fontSize: PropTypes.number.isRequired
 };
 
-const mapStateToProps = state => ({
-  pages: state.templatesReducer.pages,
-});
-
-const mapDispatcherToProps = dispatch => ({
-  alterPage: pageDetails => dispatch(addPage(pageDetails)),
-});
-
-export default connect(mapStateToProps, mapDispatcherToProps)(Canvas);
+export default Canvas
