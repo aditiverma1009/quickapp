@@ -61,6 +61,7 @@ class NewPPTCard extends Component {
       }
     }
   }
+
   render() {
 
     const { open } = this.state;
